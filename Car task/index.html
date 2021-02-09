@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Car task</title>
+</head>
+<body>
+    <h1>Car bingo!</h1>
+    <div class="container">
+        <h2>Insert car data</h2>
+        <form id = "userinput">
+            <div class ="userinput">
+                <label for="licenceplate">Licence number </label><input type="text" name="licenceplate" id="licenceplate"/></div>
+                <div class="userinput">
+                <label for="carmaker">Manufacturer </label><input type="text" name="carmaker" id="carmaker"/></div>
+                <div class="userinput">
+                <label for="carmodel">Car model </label><input type="text" name="carmodel" id="carmodel"/></div>
+                <div class="userinput">
+                <label for="carprice">Price </label><input type="number" name="carprice" id="carprice"/></div>
+                <div class="userinput">
+                <label for="carcolor">Color </label><input type="text" name="carcolor" id="carcolor"/></div>
+                <button id="adding" type="submit" class="userinput">Add a car</button>
+                <button id="resetting" type="reset" class="userinput">Reset</button>
+</form> 
+<h2>Search by car licence number</h2><form id="searching"> <div>
+    <label for="licence">Licence number </label
+        ><input type="text" id="searchLicence" />
+      </div>
+      <button id="searching" type="submit" class="searching">Search</button>
+      </form>
+    <p></p>
+    <script src="main.js"></script>
+</body>
+</html>
