@@ -1,0 +1,11 @@
+table {
+  border: 1px solid #333;
+  border-collapse: collapse;
+  padding: 10px;
+}
+
+thead {
+  background-color: dimgray;
+  color: white;
+  text-transform: uppercase;
+}

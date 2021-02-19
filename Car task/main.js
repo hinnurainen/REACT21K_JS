@@ -7,6 +7,16 @@ function Car(licence, maker, model, price, color) {
     this.carModel = model;
     this.carPrice = price;
     this.carColor = color;
+    this.discount = function () {
+        if (this.carPrice >= 20000) {
+            this.discount = this.carPrice * 0.25;
+        } else if (this.carPrice <= 5000) {
+            this.discount = this.carPrice * 0.1;
+        } else {
+            this.discount = this.carPrice * 0.15;
+        }
+    };
+    this.discount();
 };
 
 let carlist = [];
@@ -31,43 +41,21 @@ const searchCar = (event) => {
 
     let licence = document.getElementById("searchLicence").value;
     let text = document.querySelector("p");
+    formSearch.reset();
 
     if (carlist.length == 0) {
         text.textContent = "Try adding a car first.";
     } else {
-        for (let i = 0; i < carlist.length; i++) {
-            if (carlist[i].licencePlate == licence) {
-                text.textContent = `Licence number ${carlist[i].licencePlate} is ${carlist[i].carMaker} ${carlist[i].carModel}`;
+        for (const i of carlist) {
+            if (i.licencePlate == licence) {
+                text.textContent = `Licence number ${i.licencePlate} is ${i.carMaker} ${i.carModel} and your discount is ${i.discount} euros.`;
                 break;
             } else {
                 text.textContent = "Gone for coffee";
             }
         }
     }
-    formSearch.reset();
 };
-
-
-
-/* create a method discount() for the car object that returns a discounted price of the vehicle. If the price is over 20k, discount is 25%. If it's under 5k, it's 10% and otherwise 15%  
-
-    let carDisc = {
-        calcDiscount: function () {
-            if (this.carPrice > 20000) {
-                carDisc = 0.75 * this.carPrice;
-            } else if (this.carPrice < 5000) {
-                carDisc = 0.9 * this.carPrice;
-            } else {
-                carDisc = 0.85 * this.carPrice;
-            }
-        }
-        return carDisc;
-    }
-};
-
-carDisc.calcDiscount();
-    
-    */
 
 formInput.addEventListener("submit", addCar);
 formSearch.addEventListener("submit", searchCar);
