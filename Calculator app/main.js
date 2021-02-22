@@ -3,36 +3,37 @@ let secondNumber = '';
 let operation = '';
 
 document.getElementById('result').addEventListener('click', performCalculation);
+
 document.getElementById('clear').addEventListener('click', clearDisplay);
 
 document.querySelectorAll('.operators > div').forEach(button => {
-    button.addEventListener('click', function () {
-        updateSelectedOperation();
-        updateDisplay();
-    });
+  button.addEventListener('click', event => {
+    updateSelectedOperation(event);
+    updateDisplay();
+  });
 })
 
 document.querySelectorAll('.numbers > div:not(#clear)').forEach(button => {
-    button.addEventListener('click', function () {
-        updateSelectedNumber();
-        updateDisplay();
-    });
+  button.addEventListener('click', event => {
+    updateSelectedNumber(event);
+    updateDisplay();
+  });
 })
 
 function clearDisplay() {
-    document.getElementById('input').innerText = '';
+  document.getElementById('input').innerText = '';
 }
 
 function updateDisplay() {
-    document.getElementById('input').innerText = `${firstNumber} ${operation} ${secondNumber}`;
+  document.getElementById('input').innerText = `${secondNumber}${operation}${firstNumber}`;
 }
 
 function updateSelectedNumber() {
-    if (this.innerText === '.' && firstNumber.indexOf('.') > -1) {
-        return;
-    }
+  if (this.event.target.innerText === '.' && firstNumber.indexOf('.') > -1) {
+    return;
+  }
 
-    firstNumber += this.innerText;
+  firstNumber += this.event.target.innerText;
 }
 
 /**
@@ -40,26 +41,26 @@ function updateSelectedNumber() {
  */
 
 function updateSelectedOperation() {
-    secondNumber = firstNumber;
-    firstNumber = '';
+  secondNumber = firstNumber;
+  firstNumber = '';
 
-    switch (this.innerText) {
-        case '+':
-            operation = 'plus';
-            break;
-        case '-':
-            operation = 'minus';
-            break;
-        case '×':
-            operation = 'multiply';
-            break;
-        case '÷':
-            operation = 'divide';
-            break;
-        default:
-            console.log('Oops?');
-            break;
-    }
+  switch (this.event.target.innerText) {
+    case '+':
+      operation = '+';
+      break;
+    case '-':
+      operation = '-';
+      break;
+    case '×':
+      operation = '×';
+      break;
+    case '÷':
+      operation = '÷';
+      break;
+    default:
+      console.log('Oops?');
+      break;
+  }
 }
 
 /**
@@ -67,21 +68,25 @@ function updateSelectedOperation() {
  */
 
 function performCalculation() {
-    const _firstNumber = Number(firstNumber);
-    const _secondNumber = Number(secondNumber);
+  const _firstNumber = Number(firstNumber);
+  const _secondNumber = Number(secondNumber);
+  let result = 0;
 
-    if (operation === 'plus') {
-        return _firstNumber + _secondNumber;
-    } else if (operation === 'minus') {
-        return _firstNumber + _secondNumber;
-    } else if (operation === '&times;') {
-        return _firstNumber * _secondNumber;
-    } else if (operation === '$divide;') {
-        return _firstNumber / _secondNumber;
-    } else {
-        console.log('Whaat?');
-    }
+  if (operation === '+') {
+    result = _secondNumber + _firstNumber;
+  } else if (operation === '-') {
+    result = _secondNumber - _firstNumber;
+  } else if (operation === '×') {
+    result = _secondNumber * _firstNumber;
+  } else if (operation === '÷') {
+    result = _secondNumber / _firstNumber;
+  } else {
+    console.log('Whaat?')
+  }
+
+  firstNumber = "" + result;
+  secondNumber = '';
+  operation = '';
+  updateDisplay();
 }
-
-
 
