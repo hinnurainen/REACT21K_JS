@@ -1,0 +1,76 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url("https://source.unsplash.com/caH-ZLrisZA/1600x900");
+  font-family: "Rajdhani", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+input,
+textarea,
+button {
+  font-family: "Rajdhani", sans-serif;
+}
+
+.container {
+  background-color: rgb(31, 25, 27);
+  width: 500px;
+  height: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+  color: rgb(207, 191, 132);
+}
+
+h1 {
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 50%;
+  padding: 10px;
+  border: 1px solid rgb(90, 76, 49);
+  border-radius: 5px;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+#submit {
+  width: 50%;
+  background-color: rgb(90, 76, 49);
+  border: none;
+  padding: 10px;
+  color: rgb(207, 191, 132);
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-size: 13px;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+#submit:hover {
+  background-color: rgb(207, 191, 132);
+  color: rgb(31, 25, 27);
+}
+
+#answer,
+#result,
+#countdown {
+  color: rgb(207, 191, 132);
+}

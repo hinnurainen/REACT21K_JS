@@ -5,14 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300&display=swap" rel="stylesheet">
     <title>How much time left?</title>
 </head>
-<h1>How many days?</h1>
-<label id="eventname" for="eventname">What are you waiting for?</label><input type="text">
-<label id="firstdate" for="firstdate">From</label><input type="date">
-<label id="seconddate" for="seconddate">To</label><input type="date">
-<input id="submit" type="submit" value="Submit">
 <body>
-    <script src="main.js"></script>
+    <main>
+        <div class="container">
+    <h1>How many days?</h1>
+    <form>
+<p><label for="eventname">What is the event you are waiting for?</label></p><p><input type="text" id="eventname"></p><p>
+<label for="firstdate">From date:</label></p><p><input type="date" id="firstdate"></p><p>
+<label for="seconddate">To date:</label></p><p><input type="date" id="seconddate"></p>
+<input id="submit" type="submit" value="Submit">
+<p id="answer"></p>
+<p id="result"></p>
+<box id="countdown"></box>
+</form>
+</div>
+</main>
+<script src="main.js"></script>
 </body>
 </html>
