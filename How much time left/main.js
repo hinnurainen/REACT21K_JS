@@ -1,4 +1,5 @@
-function remainingTime() {
+function remainingTime(event) {
+    event.preventDefault();
     let eventName = document.getElementById("eventname").value;
     let date1 = new Date(document.getElementById("firstdate").value);
     let date2 = new Date(document.getElementById("seconddate").value);

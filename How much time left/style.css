@@ -32,6 +32,7 @@ button {
 
 h1 {
   text-transform: uppercase;
+  color: rgb(243, 187, 92);
   margin-bottom: 20px;
 }
 
@@ -70,8 +71,14 @@ input {
 }
 
 #answer,
-#result,
-#countdown {
+#result {
   color: rgb(207, 191, 132);
+  font-size: 1.5rem;
+}
+
+#countdown {
+  font-weight: bold;
+  color: rgb(243, 187, 92);
   font-size: 2rem;
+  text-shadow: 1px 1px;
 }
