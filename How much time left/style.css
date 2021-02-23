@@ -73,4 +73,5 @@ input {
 #result,
 #countdown {
   color: rgb(207, 191, 132);
+  font-size: 2rem;
 }
