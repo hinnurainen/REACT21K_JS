@@ -26,39 +26,42 @@ const getUsers = () => [
     },
 
     {
-        studentNo: 999,
+        studentNo: -1,
         name: 'Minerva',
         age: 70
     }
 ];
 
 const users = getUsers();
-const adding = addUser();
 
 users.forEach(user => {
     addUser(user);
 })
 
-let oldest = getOldest(users);
-console.log(oldest.name);
+function getOldest(user) {
 
-function getOldest(users) {
-
-    return users.reduce(function (acc, current) {
+    return user.reduce(function (acc, current) {
         if (acc.age > current.age) {
             return acc
-        } else { return current }
+        } else {
+            return current
+        }
     }).name
-
 }
 
 getOldest();
 
-let newColumn = new getUsers(users);
-users.push(newColumn);
+let isStaff = new getUsers(user);
+user.push(isStaff);
+
+if (studentNo >= 0) {
+    user.isStaff = 'student'
+} else {
+    user.isStaff = 'staff'
+}
+
 console.table(getUsers);
 
+function sortByAge() { }
 
 document.getElementById('submit').addEventListener('click', sortByAge);
-
-function sortByAge() { }
