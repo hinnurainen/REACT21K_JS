@@ -1,9 +1,5 @@
 (function () {
-    let firstTime, secondTime;
-    window.addEventListener('DOMContentLoaded', (event) => {
-        firstTime = new Date().getTime();
-        console.log('Dom is loaded', firstTime);
-        console.log('time difference was: ', (secondTime - firstTime / 1000));
+    window.addEventListener('DOMContentLoaded', function (event) {
         const users = getUsers();
 
         document.getElementById('submit').addEventListener('click', event => {
@@ -12,6 +8,7 @@
         })
 
         let tbody = document.querySelector("tbody");
+
         users.forEach(addUser);
         renderTable(users);
 
@@ -32,8 +29,6 @@
         }
 
         executeScript();
-
-        console.log('hello from anonymous fn', secondTime);
     })
 })();
 
@@ -71,11 +66,11 @@ function getOldest(userObjs) {
 let addUser = (userObj) => {
     let newRow = document.createElement('tr');
     newRow.innerHTML = `
-        <td>${userObj.studentNo}</td>
-        <td>${userObj.name}</td>
-        <td>${userObj.age}</td>
-        <td>${userObj.studentNo < 0}</td>
-        `;
+    <td>${userObj.studentNo}</td>
+    <td>${userObj.name}</td>
+    <td>${userObj.age}</td>
+    <td>${userObj.studentNo < 0}</td>
+    `;
     document.querySelector("tbody").appendChild(newRow);
 };
 
@@ -98,11 +93,6 @@ function getUsers() {
         },
         {
             studentNo: -1,
-            name: 'Minerva',
-            age: 63
-        },
-        {
-            studentNo: -1,
             name: 'Snape',
             age: 55
         },
@@ -110,5 +100,11 @@ function getUsers() {
             studentNo: -1,
             name: 'Hagrid',
             age: 65
+        },
+
+        {
+            studentNo: -1,
+            name: 'Minerva',
+            age: 63
         }];
 };

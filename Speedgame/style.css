@@ -1,0 +1,104 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Orbitron", sans-serif;
+  background-color: rgb(32, 32, 32);
+  color: rgb(255, 209, 0);
+  background-attachment: fixed;
+  text-align: center;
+}
+
+h1 {
+  font-size: 4em;
+}
+
+#score {
+  height: 24px;
+}
+
+.gamearea {
+  margin: 100px auto;
+  width: 80%;
+  text-align: center;
+}
+
+.circle {
+  height: 150px;
+  width: 150px;
+  background: rgb(214, 214, 214);
+  box-shadow: 0 0 3px 2px rgb(51, 53, 51);
+  border-radius: 50%;
+  display: inline-block;
+  margin: 20px 20px;
+}
+
+.circle.active {
+  background-color: rgb(255, 209, 0);
+}
+
+.circle:active {
+  box-shadow: inset 0 0 5px rgb(32, 32, 32);
+}
+
+button {
+  font-family: "Orbitron";
+  font-size: 20px;
+  background: rgb(51, 53, 51);
+  color: rgb(255, 239, 0);
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  margin: 20px;
+}
+
+button:hover {
+  color: rgb(214, 214, 214);
+}
+
+#result {
+  visibility: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gameoverbox {
+  background-color: rgb(214, 214, 214);
+  color: rgb(32, 32, 32);
+  padding: 100px 0 0 0;
+  width: 40%;
+  height: 30%;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  position: relative;
+}
+
+.gameoverbox button {
+  color: rgb(32, 32, 32);
+  background-color: transparent;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  outline: none;
+}
+
+#gameover {
+  font-size: 24px;
+  color: rgb(51, 53, 51);
+}

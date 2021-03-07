@@ -1,11 +1,20 @@
-table {
+table,
+th,
+td {
   border: 1px solid #333;
   border-collapse: collapse;
   padding: 10px;
+  text-align: center;
+  margin: 10px;
 }
 
 thead {
   background-color: dimgray;
   color: white;
   text-transform: uppercase;
+}
+
+button {
+  background-color: #333;
+  color: white;
 }
