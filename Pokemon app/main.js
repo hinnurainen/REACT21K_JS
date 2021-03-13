@@ -1,61 +1,31 @@
 (function () {
-    window.addEventListener('DOMContentLoaded', executeScript)
+    window.addEventListener('DOMContentLoaded', executeScript);
 
-    const pokemons = [{
-        "name": "bulbasaur",
-        "url": "https://pokeapi.co/api/v2/pokemon/1/",
-        "sprites": {
-            "back_female": "http://pokeapi.co/media/sprites/pokemon/back/female/1.png",
-            "back_shiny_female": "http://pokeapi.co/media/sprites/pokemon/back/shiny/female/1.png",
-            "back_default": "http://pokeapi.co/media/sprites/pokemon/back/1.png",
-            "front_female": "http://pokeapi.co/media/sprites/pokemon/female/1.png",
-            "front_shiny_female": "http://pokeapi.co/media/sprites/pokemon/shiny/female/1.png",
-            "back_shiny": "http://pokeapi.co/media/sprites/pokemon/back/shiny/1.png",
-            "front_default": "http://pokeapi.co/media/sprites/pokemon/1.png",
-            "front_shiny": "http://pokeapi.co/media/sprites/pokemon/shiny/1.png"
-        },
-    }];
+    const POKEMON_URL = 'https://pokeapi.co/api/v2/pokemon?limit=100&offset=300'
+    let pokemons = [];
 
-    function executeScript() {
-        fetch('https://pokeapi.co/api/v2/pokemon?offset=0&limit=1000')
-            .then(resp => resp.json())
-            .then(json => {
-                json.results.forEach(addPokemon)
+    async function executeScript() {
+        let json = await (await fetch(POKEMON_URL)).json();
+        pokemons = json.results;
+        pokemons.forEach(addPokemonEl);
+
+
+        document.querySelectorAll('.pokemon .name').forEach(el => {
+            el.addEventListener('click', async (e) => {
+                let details = await (await fetch(e.target.getAttribute('data-url'))).json()
+
+                document.getElementById('current-pokemon').setAttribute('src', details.sprites.front_default);
             })
+        })
     }
 
-    function addPokemon(pokemon) {
-        const newEl = document.createElement('div');
-        newEl.className = 'pokemon';
-        newEl.innerHTML = `<img src=${pokemon.sprites.front_default}><div class="nickname">${pokemon.name}</div>
-    <div class="url">${pokemon.url}</div>`;
+    function addPokemonEl(pokemon) {
+        const newPokemonEl = document.createElement('div');
+        newPokemonEl.className = 'pokemon';
+        newPokemonEl.innerHTML = `
+    <div class="name" data-url="${pokemon.url}">${pokemon.name}</div>`;
 
-        document.getElementById('pokemon-list').appendChild(newEl);
+        document.getElementById('list').appendChild(newPokemonEl);
     }
+
 })();
-
-
-/**
-const pokemonImgs = [{
-    "sprites": {
-        "back_female": "http://pokeapi.co/media/sprites/pokemon/back/female/1.png",
-        "back_shiny_female": "http://pokeapi.co/media/sprites/pokemon/back/shiny/female/1.png",
-        "back_default": "http://pokeapi.co/media/sprites/pokemon/back/1.png",
-        "front_female": "http://pokeapi.co/media/sprites/pokemon/female/1.png",
-        "front_shiny_female": "http://pokeapi.co/media/sprites/pokemon/shiny/female/1.png",
-        "back_shiny": "http://pokeapi.co/media/sprites/pokemon/back/shiny/1.png",
-        "front_default": "http://pokeapi.co/media/sprites/pokemon/1.png",
-        "front_shiny": "http://pokeapi.co/media/sprites/pokemon/shiny/1.png"
-    },
-}];
-
-
-function addPokemonImg(pokemonImg) {
-    const newEl = document.createElement('div');
-    newEl.className = 'pokemonImg';
-    newEl.innerHTML = `            <div class="profile-image">
-    <img src="${pokemonImg.sprites.front_default}"/>
-</div>`;
-
-    document.getElementById('pokemon-list').appendChild(newEl);
-} */

@@ -41,6 +41,7 @@ h1 {
 }
 
 .circle.active {
+  background-image: url(speedy5.png);
   background-color: rgb(255, 209, 0);
 }
 
@@ -52,7 +53,7 @@ button {
   font-family: "Orbitron";
   font-size: 20px;
   background: rgb(51, 53, 51);
-  color: rgb(255, 239, 0);
+  color: rgb(255, 209, 0);
   padding: 10px;
   border-radius: 5px;
   border: none;
@@ -99,6 +100,6 @@ button:hover {
 }
 
 #gameover {
-  font-size: 24px;
+  font-size: 16px;
   color: rgb(51, 53, 51);
 }
