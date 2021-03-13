@@ -74,9 +74,6 @@ function getChosenWeather() {
         .then(function () {
             displayWeather();
         });
-    if (askedCity !== weather.city) {
-        alert(`${askedCity} not recognized, type another city!`);
-    }
 }
 
 function displayWeather() {
