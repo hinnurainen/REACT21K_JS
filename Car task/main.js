@@ -6,7 +6,7 @@ function Car(licence, maker, model, price, color) {
     this.carMaker = maker;
     this.carModel = model;
     this.carPrice = price;
-    this.carColor = color;
+    this.carColor = colgitor;
     this.discount = function () {
         if (this.carPrice >= 20000) {
             this.discount = this.carPrice * 0.25;

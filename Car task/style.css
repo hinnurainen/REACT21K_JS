@@ -16,6 +16,7 @@ html {
 
 h1 {
   text-transform: uppercase;
+  text-align: center;
 }
 
 .container {
@@ -25,6 +26,7 @@ h1 {
   padding: 10px;
   border-radius: 5px;
   text-align: center;
+  box-shadow: rgba(232, 93, 4) 0px 3px 8px;
 }
 
 .userinput {
@@ -61,4 +63,6 @@ h1 {
 
 .container form button:hover {
   background-color: rgb(232, 93, 4);
+  cursor: pointer;
+  color: rgb(3, 7, 30);
 }
