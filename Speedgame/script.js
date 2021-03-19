@@ -6,6 +6,7 @@ let startButton = document.getElementById("startbutton");
 let endButton = document.getElementById("endbutton");
 let backgroundSound;
 let gameoverSound;
+let gameOn = false;
 
 let close = document.getElementById("close");
 
@@ -44,6 +45,7 @@ const getRandomInt = (min, max) => {
 
 const startGame = () => {
     console.log("Game started");
+    gameOn = true;
 
     startButton.style.display = "none";
     endButton.style.visibility = "visible";
@@ -63,7 +65,11 @@ function gameLoop(loop) {
     active = nextActive;
 
     console.log("Active:", active);
-    buttonList.push(active);
+
+    if (gameOn == true) {
+        buttonList.push(active)
+    }
+
     if (buttonList.length == 4) {
         endGame();
         return 0;
@@ -91,6 +97,7 @@ function gameLoop(loop) {
 const endGame = () => {
     clearTimeout();
     console.log("Game over");
+    gameOn = false;
     backgroundSound.stop();
     gameoverSound = new sound("07_Game Over_endMusic.mp3");
     gameoverSound.play();
@@ -116,6 +123,7 @@ close.addEventListener("click", reloadGame);
 function sound(src) {
     this.sound = document.createElement("audio");
     this.sound.src = src;
+    this.sound.loop = true;
     this.sound.setAttribute("preload", "auto");
     this.sound.setAttribute("controls", "none");
     this.sound.style.display = "none";
