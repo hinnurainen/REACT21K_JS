@@ -64,6 +64,10 @@ button:hover {
   color: rgb(214, 214, 214);
 }
 
+#endbutton {
+  visibility: hidden;
+}
+
 #result {
   visibility: hidden;
   position: fixed;

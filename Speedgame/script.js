@@ -6,10 +6,13 @@ let startButton = document.getElementById("startbutton");
 let endButton = document.getElementById("endbutton");
 let backgroundSound;
 let gameoverSound;
+
 let close = document.getElementById("close");
 
 let score = 0;
 let active = 0;
+
+let buttonList = [];
 
 buttons[0].onclick = function () {
     clicked(0);
@@ -26,7 +29,12 @@ buttons[3].onclick = function () {
 
 const clicked = (i) => {
     console.log("clicked:", i);
-    score++;
+    let buttonToBePicked = buttonList.pop();
+    if (i == buttonToBePicked) {
+        score++;
+    } else {
+        endGame();
+    }
     scoredisplay.textContent = `Your score is ${score}`;
 };
 
@@ -37,13 +45,16 @@ const getRandomInt = (min, max) => {
 const startGame = () => {
     console.log("Game started");
 
+    startButton.style.display = "none";
+    endButton.style.visibility = "visible";
+
     backgroundSound = new sound("01_Title Screen_backgroundMusic.mp3");
     backgroundSound.play();
 
-    buttons.style.pointer - events("auto");
-    startButton.style.display("none");
-    endButton.style.display("block");
+    gameLoop(1010);
+};
 
+function gameLoop(loop) {
     let nextActive = pickNew(active);
 
     buttons[nextActive].classList.toggle("active");
@@ -52,8 +63,19 @@ const startGame = () => {
     active = nextActive;
 
     console.log("Active:", active);
+    buttonList.push(active);
+    if (buttonList.length == 4) {
+        endGame();
+        return 0;
+    }
+    console.log(buttonList);
 
-    timer = setTimeout(startGame, 1000);
+    loop -= 10
+    console.log(loop);
+
+    timer = setTimeout(function () {
+        gameLoop(loop);
+    }, loop);
 
     function pickNew(active) {
         let nextActive = getRandomInt(0, 3);
@@ -64,15 +86,14 @@ const startGame = () => {
             return pickNew(active);
         }
     }
-};
+}
 
 const endGame = () => {
-    clearTimeout(timer);
+    clearTimeout();
     console.log("Game over");
     backgroundSound.stop();
     gameoverSound = new sound("07_Game Over_endMusic.mp3");
-    gameoverSound.start();
-    startButton.style.display("block");
+    gameoverSound.play();
     overlay.style.visibility = "visible";
     if (score == 0) {
         gameover.textContent = `Your score is ${score} and you can only dream about being Speedy!`;
@@ -90,7 +111,6 @@ const reloadGame = () => {
     window.location.reload();
 };
 
-close.addEventListener("click", gameoverSound.stop())
 close.addEventListener("click", reloadGame);
 
 function sound(src) {
